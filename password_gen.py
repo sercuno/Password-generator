@@ -18,7 +18,7 @@ while True:
         if length <= 5:
             print("The password is going to be too small, recommend to use a password more that 5.")
         if length > 25:
-             rint("Your password is too long, it would be hard to memorise.")
+            print("Your password is too long, it would be hard to memorise.")
         if length > 5:
             break
         if length <= 25:
