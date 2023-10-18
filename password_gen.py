@@ -1,30 +1,44 @@
-# Modules
+# Importing modules
 from random import shuffle, choice
+import string
 
-# Values such as symbols, numbers and letter 
-lower_letter = "abcdefghijklmnopqrstuvwxyzåøæ"
-upper_letter = lower_letter.upper()
-symbols = "#$&!/+?*@"
-numbers = "1234567890"
+# Storing the characters from string
+characters = (string.ascii_lowercase +
+              string.ascii_uppercase +
+              string.digits +
+              string.punctuation)
 
-# Storing the stuff generated from the iteration
-pw = []
+# The list that will store the characters in the password
+storage = list(set())
 
-# Decide how many digits the user wants for their password
-digits = int(input("How many digits do you want for your password?:  "))
-
-# Generates the password
-while len(pw) <= digits:
-    pw.append(choice(lower_letter))
-    pw.append(choice(upper_letter))
-    pw.append(choice(symbols))
-    pw.append(choice(numbers))
-
-shuffle(pw)
-password = "".join(pw)
-
-
-# Printes the password
-print(password)
+# Asking the user the amount of digits they want
+while True:
+    try:
+        length = int(input("What's the lenght you want for your password: "))
+        if length <= 5:
+            print("The password is going to be too small, recommend to use a password more that 5.")
+        if length > 25:
+             rint("Your password is too long, it would be hard to memorise.")
+        if length > 5:
+            break
+        if length <= 25:
+            break
+        else:
+            print("Enter a positive integer.")
+    except ValueError:
+        print("Enter a valid integer.")
+        
+# Generating the password
+while len(storage) <= length:
+    storage.append(choice(characters))
     
+# Shuffling the list that contains the password
+shuffle(storage)
+
+# Turning the list into a string variable
+password = "".join(storage)
+
+# Printing the password
+print(f"Your new password: {password}")
+
     
